@@ -22,7 +22,9 @@ public class SignUp extends AppCompatActivity {
         btn.setOnClickListener(view -> {
             User usr = new User(edit_name.getText().toString(),edit_password.getText().toString());
             dao.add(usr).addOnSuccessListener(suc->{
-                Toast.makeText(this, "Record is Inserted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Akun Berhasil Registrasi", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, Login.class);
+                startActivity(intent);
             }).addOnFailureListener(er->{
                 Toast.makeText(this, ""+er.getMessage(), Toast.LENGTH_SHORT).show();
             });
