@@ -96,7 +96,7 @@
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/purple_500"
         android:fontFamily="@font/lexendregular"
-        android:onClick="GoMusic"
+        android:onClick="GoHome"
         android:text="Lets Jam !"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
