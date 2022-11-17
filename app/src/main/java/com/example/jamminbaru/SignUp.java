@@ -15,12 +15,13 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        final EditText edit_name = findViewById(R.id.usernameText);
+        final EditText edit_email = findViewById(R.id.emailText);
         final EditText edit_password = findViewById(R.id.passwordText);
+        final EditText edit_confirmPassword = findViewById(R.id.passwordConfirmText);
         Button btn = findViewById(R.id.register_btn);
         DAOUser dao = new DAOUser();
         btn.setOnClickListener(view -> {
-            User usr = new User(edit_name.getText().toString(),edit_password.getText().toString());
+            User usr = new User(edit_email.getText().toString(), edit_password.getText().toString(), edit_confirmPassword.getText().toString());
             dao.add(usr).addOnSuccessListener(suc->{
                 Toast.makeText(this, "Akun Berhasil Registrasi", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, Login.class);
