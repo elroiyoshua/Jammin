@@ -65,7 +65,7 @@
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <EditText
         android:id="@+id/passwordText"
@@ -73,18 +73,18 @@
         android:layout_height="48dp"
         android:background="@drawable/input_bg"
         android:drawablePadding="10dp"
+        android:fontFamily="@font/lexendregular"
         android:hint="Password"
         android:inputType="textPassword"
-        android:fontFamily="@font/lexendregular"
-        android:textSize="14dp"
         android:paddingLeft="20dp"
         android:textColorHint="@color/purple_200"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.525" />
+        app:layout_constraintVertical_bias="0.591" />
 
     <EditText
         android:id="@+id/passwordConfirmText"
@@ -92,33 +92,37 @@
         android:layout_height="48dp"
         android:background="@drawable/input_bg"
         android:drawablePadding="10dp"
+        android:fontFamily="@font/lexendregular"
         android:hint="Confirm Password"
         android:inputType="textPassword"
-        android:fontFamily="@font/lexendregular"
-        android:textSize="14dp"
         android:paddingLeft="20dp"
         android:textColorHint="@color/purple_200"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
+        app:layout_constraintVertical_bias="0.683" />
 
-    <Button
-        android:id="@+id/register_btn"
+    <EditText
+        android:id="@+id/phoneText"
         android:layout_width="300dp"
-        android:layout_height="56dp"
+        android:layout_height="48dp"
         android:background="@drawable/input_bg"
+        android:drawablePadding="10dp"
         android:fontFamily="@font/lexendregular"
-        android:text="Let's jam!"
-        android:textStyle="bold"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:textColorHint="@color/purple_200"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
-        app:layout_constraintVertical_bias="0.740" />
+        app:layout_constraintVertical_bias="0.415" />
 
     <TextView
         android:id="@+id/signUpTextUnderBtn"
@@ -131,7 +135,22 @@
         app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795" />
+        app:layout_constraintVertical_bias="0.858" />
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
+        android:background="@drawable/input_bg"
+        android:fontFamily="@font/lexendregular"
+        android:text="Let's jam!"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.807" />
 
     <Button
         android:id="@+id/loginDirect"
@@ -147,6 +166,6 @@
         app:layout_constraintHorizontal_bias="0.839"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.804" />
+        app:layout_constraintVertical_bias="0.869" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
