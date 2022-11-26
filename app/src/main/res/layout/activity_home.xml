@@ -6,18 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Home">
 
-    <ImageView
-        android:layout_width="171dp"
-        android:layout_height="120dp"
-        android:src="@drawable/jam_removebg_preview"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068"
 
-        />
 
     <FrameLayout
         android:layout_width="0dp"
