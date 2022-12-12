@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home">
-
+    tools:context=".Playlist">
     <ImageButton
         android:id="@+id/imageButton10"
         style="?android:attr/borderlessButtonStyle"
@@ -13,7 +12,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/rumah2" />
+        app:srcCompat="@drawable/rumah"
+        android:onClick="GoHome"
+        />
 
     <ImageButton
         android:id="@+id/imageButton13"
@@ -40,8 +41,6 @@
         app:layout_constraintStart_toStartOf="@+id/imageButton10"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/playlistku"
-        android:onClick="GoPlaylist"
-        />
+        app:srcCompat="@drawable/playlistku2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
