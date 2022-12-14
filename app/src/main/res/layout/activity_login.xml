@@ -58,7 +58,7 @@
         android:background="@drawable/input_bg"
         android:drawablePadding="10dp"
         android:fontFamily="@font/lexendregular"
-        android:hint="Email"
+        android:hint="Username"
         android:paddingLeft="20dp"
         android:textSize="14dp"
         android:textColor="@color/purple_200"

@@ -24,7 +24,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        final EditText email = findViewById(R.id.username);
+        final EditText username = findViewById(R.id.username);
         final EditText password = findViewById(R.id.password);
         final Button login_Btn = findViewById(R.id.loginbutton);
 
@@ -35,31 +35,38 @@ public class Login extends AppCompatActivity {
 //                final String emailTxt = email.getText().toString();
 //                final String passwordTxt = password.getText().toString();
 
-                final String phoneTxt = email.getText().toString();
+                final String usernameTxt = username.getText().toString();
                 final String passwordTxt = password.getText().toString();
 
-                if(phoneTxt.isEmpty() || passwordTxt.isEmpty()){
-                    Toast.makeText(Login.this, "Silahkan Masukkan Email atau Password Anda", Toast.LENGTH_SHORT).show();
+                if(usernameTxt.isEmpty()){
+                    username.setError("Enter Username");
+                }
+                if(passwordTxt.isEmpty()){
+                    password.setError("Enter Password");
                 }else{
 
                     databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.hasChild(phoneTxt)){
+                            if(snapshot.hasChild(usernameTxt)){
 
-                                final String getPassword = snapshot.child(phoneTxt).child("Password").getValue(String.class);
+                                final String getPassword = snapshot.child(usernameTxt).child("Password").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
                                     Toast.makeText(Login.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
 
-                                    startActivity(new Intent(Login.this, Home.class));
-                                    finish();
+//                                    startActivity(new Intent(Login.this, Home.class));
+//                                    finish();
+
+                                    Intent intent = new Intent(Login.this, Home.class);
+                                    intent.putExtra("usernameTag", usernameTxt);
+                                    startActivity(intent);
 
                                 }else{
-                                    Toast.makeText(Login.this, "Password Salah", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, "Username atau Password Salah", Toast.LENGTH_SHORT).show();
                                 }
                             }else{
-                                Toast.makeText(Login.this, "Password Salah", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "Username atau Password Salah", Toast.LENGTH_SHORT).show();
                             }
                         }
 
