@@ -46,6 +46,24 @@ public class Home extends AppCompatActivity {
 
         usernamedisplayTagHome.setText(usernameTxt);
     }
+    public void GoLagu1(View v){
+        Intent intent =new Intent(this,lagu1.class);
+        startActivity(intent);
+        finish();
+
+    }
+    public void GoLagu2(View v){
+        Intent intent =new Intent(this,lagu2.class);
+        startActivity(intent);
+        finish();
+
+    }
+    public void GoLagu3(View v){
+        Intent intent =new Intent(this,lagu3.class);
+        startActivity(intent);
+        finish();
+
+    }
 
 //    public void GoPlaylist(View v){
 //        Intent intent =new Intent(this,Playlist.class);
@@ -59,9 +77,9 @@ public class Home extends AppCompatActivity {
 //        startActivity(intent);
 //        finish();
 //
-////        Intent intent =new Intent(this,Profile.class);
-////        intent.putExtra("usernameTag", usernameTxt);
-////        startActivity(intent);
+//        Intent intent =new Intent(this,Profile.class);
+//        intent.putExtra("usernameTag", usernameTxt);
+//        startActivity(intent);
 //
 //    }
 }
