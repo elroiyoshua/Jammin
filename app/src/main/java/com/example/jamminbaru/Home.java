@@ -27,4 +27,22 @@ public class Home extends AppCompatActivity {
         finish();
 
     }
+    public void GoLagu1(View v){
+        Intent intent =new Intent(this,Lagu1.class);
+        startActivity(intent);
+        finish();
+
+    }
+    public void GoLagu2(View v){
+        Intent intent =new Intent(this,lagu2.class);
+        startActivity(intent);
+        finish();
+
+    }
+    public void GoLagu3(View v){
+        Intent intent =new Intent(this,lagu3.class);
+        startActivity(intent);
+        finish();
+
+    }
 }
