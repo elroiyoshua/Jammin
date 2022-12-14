@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Playlist">
     <ImageButton
-        android:id="@+id/imageButton10"
+        android:id="@+id/homeLogo2"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         />
 
     <ImageButton
-        android:id="@+id/imageButton13"
+        android:id="@+id/profileLogo2"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,19 +26,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageButton10"
+        app:layout_constraintStart_toEndOf="@+id/homeLogo2"
         app:srcCompat="@drawable/user"
         android:onClick="GoProfile"
         />
 
     <ImageButton
-        android:id="@+id/imageButton14"
+        android:id="@+id/playlistLogo2"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageButton10"
+        app:layout_constraintStart_toStartOf="@+id/homeLogo2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/playlistku2" />
