@@ -31,18 +31,6 @@ public class SignUp extends AppCompatActivity {
         final EditText edit_confirmPassword = findViewById(R.id.passwordConfirmText);
 
         Button register_btn = findViewById(R.id.register_btn);
-//        DAOUser dao = new DAOUser();
-//
-//        register_btn.setOnClickListener(view -> {
-//            User usr = new User(edit_email.getText().toString(), edit_password.getText().toString(), edit_confirmPassword.getText().toString());
-//            dao.add(usr).addOnSuccessListener(suc->{
-//                Toast.makeText(this, "Akun Berhasil Registrasi", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(this, Login.class);
-//                startActivity(intent);
-//            }).addOnFailureListener(er->{
-//                Toast.makeText(this, ""+er.getMessage(), Toast.LENGTH_SHORT).show();
-//            });
-//        });
 
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,10 +41,20 @@ public class SignUp extends AppCompatActivity {
                 final String passwordConfirmTxt = edit_confirmPassword.getText().toString();
 
 
-                if(emailTxt.isEmpty() || passwordTxt.isEmpty() || passwordConfirmTxt.isEmpty()){
-                    Toast.makeText(SignUp.this, "Harap Isi Semua Data", Toast.LENGTH_SHORT).show();
-                }else if(!passwordTxt.equals(passwordConfirmTxt)){
-                    Toast.makeText(SignUp.this, "Password Yang Diinput Tidak Sama", Toast.LENGTH_SHORT).show();
+                if(phoneTxt.isEmpty()) {
+                    edit_phone.setError("Enter Your Username");
+                }if(emailTxt.isEmpty()){
+                    edit_email.setError("Enter Your Email");
+                }if(passwordTxt.isEmpty()) {
+                    edit_password.setError("Enter Your Password");
+                }if(!passwordTxt.isEmpty()) {
+                    if(passwordTxt.length()<8){
+                        edit_password.setError("Password too short");
+                    }
+                }if(passwordConfirmTxt.isEmpty()){
+                    edit_confirmPassword.setError("Enter Your Confirm Password");
+                }else if(!passwordTxt.equals(passwordConfirmTxt)) {
+                    edit_confirmPassword.setError("Password didn't Match");
                 }else{
 
                     databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -64,17 +62,14 @@ public class SignUp extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             //Apakah user terdaftar
                             if(snapshot.hasChild(phoneTxt)){
-                                Toast.makeText(SignUp.this, "User Sudah Pernah Terdaftar", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this, "User Already Registered", Toast.LENGTH_SHORT).show();
                             }
-//                            else if(snapshot.hasChild(emailTxt)){
-//                                Toast.makeText(SignUp.this, "Email Sudah Pernah Terdaftar", Toast.LENGTH_SHORT).show();
-//                            }
                             else{
                                 databaseReference.child("users").child(phoneTxt).child("Email").setValue(emailTxt);
                                 databaseReference.child("users").child(phoneTxt).child("Password").setValue(passwordTxt);
                                 databaseReference.child("users").child(phoneTxt).child("Confirm Password").setValue(passwordConfirmTxt);
 
-                                Toast.makeText(SignUp.this, "Pengguna Berhasil Terdaftar", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(SignUp.this, Login.class));
                                 finish();
                             }
@@ -97,4 +92,6 @@ public class SignUp extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+
 }

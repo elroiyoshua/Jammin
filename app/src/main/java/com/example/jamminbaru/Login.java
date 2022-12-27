@@ -32,9 +32,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                final String emailTxt = email.getText().toString();
-//                final String passwordTxt = password.getText().toString();
-
                 final String usernameTxt = username.getText().toString();
                 final String passwordTxt = password.getText().toString();
 
@@ -44,7 +41,6 @@ public class Login extends AppCompatActivity {
                 if(passwordTxt.isEmpty()){
                     password.setError("Enter Password");
                 }else{
-
                     databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -53,20 +49,17 @@ public class Login extends AppCompatActivity {
                                 final String getPassword = snapshot.child(usernameTxt).child("Password").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
-                                    Toast.makeText(Login.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
-
-//                                    startActivity(new Intent(Login.this, Home.class));
-//                                    finish();
+                                    Toast.makeText(Login.this, "Successfully Login", Toast.LENGTH_SHORT).show();
 
                                     Intent intent = new Intent(Login.this, Home.class);
                                     intent.putExtra("usernameTag", usernameTxt);
                                     startActivity(intent);
 
                                 }else{
-                                    Toast.makeText(Login.this, "Username atau Password Salah", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
                                 }
                             }else{
-                                Toast.makeText(Login.this, "Username atau Password Salah", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
                             }
                         }
 
