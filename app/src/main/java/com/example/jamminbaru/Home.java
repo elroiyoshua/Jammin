@@ -64,6 +64,12 @@ public class Home extends AppCompatActivity {
         finish();
 
     }
+    public void sementara(View v){
+        Intent intent =new Intent(this,home2.class);
+        startActivity(intent);
+        finish();
+
+    }
 
 //    public void GoPlaylist(View v){
 //        Intent intent =new Intent(this,Playlist.class);

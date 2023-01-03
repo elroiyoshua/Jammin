@@ -222,6 +222,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
+        android:text="Button Sementara ke Home List"
+        app:layout_constraintBottom_toBottomOf="@+id/playlistLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonlagu3"
+        app:layout_constraintVertical_bias="0.761"
+        android:onClick="sementara"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

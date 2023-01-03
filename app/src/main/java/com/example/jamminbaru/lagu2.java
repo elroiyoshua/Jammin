@@ -23,7 +23,7 @@ public class lagu2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lagu1);
+        setContentView(R.layout.activity_lagu2);
         playpause = findViewById(R.id.playpause);
         waktu = findViewById(R.id.waktu);
         waktutotal = findViewById(R.id.waktutotal);
@@ -81,6 +81,7 @@ public class lagu2 extends AppCompatActivity {
     public void GoHome(View v){
         Intent intent =new Intent(this,Home.class);
         startActivity(intent);
+        mediaPlayer.pause();
         finish();
 
     }
