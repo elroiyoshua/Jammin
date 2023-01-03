@@ -1,6 +1,45 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">JamminBaru</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="zero">0:00</string>
+    <string-array name="Judul">
+        <item>This Is Why</item>
+        <item>Aprroaching Storm</item>
+        <item>Goofy Phonk</item>
+        <item>Lagu 4</item>
+        <item>Lagu 5</item>
+        <item>Lagu 6</item>
+        <item>Lagu 7</item>
+        <item>Lagu 8</item>
+        <item>Lagu 9</item>
+        <item>Lagu 10</item>
+    </string-array>
+    <string-array name="Band">
+        <item>Paramore</item>
+        <item>Bury The Light</item>
+        <item>Ariis</item>
+        <item>Band 4</item>
+        <item>Band 5</item>
+        <item>Band 6</item>
+        <item>Band 7</item>
+        <item>Band 8</item>
+        <item>Band 9</item>
+        <item>Band 10</item>
+
+
+    </string-array>
+    <string-array name="URL">
+        <item>link1 </item>
+        <item> link2</item>
+        <item>link3</item>
+        <item>shorturl.at/nzCH6</item>
+        <item>shorturl.at/nzCH6</item>
+        <item>shorturl.at/nzCH6</item>
+        <item>shorturl.at/nzCH6</item>
+        <item>shorturl.at/nzCH6</item>
+        <item>shorturl.at/nzCH6</item>
+        <item>shorturl.at/nzCH6</item>
+    </string-array>
 </resources>

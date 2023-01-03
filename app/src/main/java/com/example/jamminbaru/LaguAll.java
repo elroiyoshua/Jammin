@@ -13,7 +13,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class lagu1 extends AppCompatActivity {
+public class LaguAll extends AppCompatActivity {
     private ImageView playpause;
     private TextView waktu,waktutotal;
     private SeekBar seekbar;
@@ -25,7 +25,7 @@ public class lagu1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lagu1);
+        setContentView(R.layout.activity_lagu_all);
         playpause = findViewById(R.id.playpause);
         waktu = findViewById(R.id.waktu);
         waktutotal = findViewById(R.id.waktutotal);
@@ -66,11 +66,11 @@ public class lagu1 extends AppCompatActivity {
 //                    waktu.setText(milisecondstotimer(mediaPlayer.getCurrentPosition()));
 //                    return false;
 //                }
-              SeekBar seekBar = (SeekBar) view;
-                    int playPosition = (mediaPlayer.getDuration() / 100) * seekBar.getProgress();
-                    mediaPlayer.seekTo(playPosition);
-                    waktu.setText(milisecondstotimer(mediaPlayer.getCurrentPosition()));
-                    return false;
+                SeekBar seekBar = (SeekBar) view;
+                int playPosition = (mediaPlayer.getDuration() / 100) * seekBar.getProgress();
+                mediaPlayer.seekTo(playPosition);
+                waktu.setText(milisecondstotimer(mediaPlayer.getCurrentPosition()));
+                return false;
             }
         });
 
@@ -96,7 +96,7 @@ public class lagu1 extends AppCompatActivity {
     }
     public void GoHome(View v){
 
-        Intent intent =new Intent(this,Home.class);
+        Intent intent =new Intent(this,home2.class);
         startActivity(intent);
         mediaPlayer.pause();
 
@@ -149,5 +149,4 @@ public class lagu1 extends AppCompatActivity {
         timerstring  = timerstring + minute + ":" + secondstring;
         return  timerstring;
     }
-
 }
