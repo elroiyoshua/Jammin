@@ -1,13 +1,18 @@
-package com.example.jamminbaru;
+package com.example.jamminbaru.ControllerUser;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.example.jamminbaru.R;
+import com.example.jamminbaru.home2;
+import com.example.jamminbaru.lagu1;
+import com.example.jamminbaru.lagu2;
+import com.example.jamminbaru.lagu3;
 
 public class Home extends AppCompatActivity {
     private ImageButton playlist;
@@ -47,25 +52,25 @@ public class Home extends AppCompatActivity {
         usernamedisplayTagHome.setText(usernameTxt);
     }
     public void GoLagu1(View v){
-        Intent intent =new Intent(this,lagu1.class);
+        Intent intent =new Intent(this, lagu1.class);
         startActivity(intent);
         finish();
 
     }
     public void GoLagu2(View v){
-        Intent intent =new Intent(this,lagu2.class);
+        Intent intent =new Intent(this, lagu2.class);
         startActivity(intent);
         finish();
 
     }
     public void GoLagu3(View v){
-        Intent intent =new Intent(this,lagu3.class);
+        Intent intent =new Intent(this, lagu3.class);
         startActivity(intent);
         finish();
 
     }
     public void sementara(View v){
-        Intent intent =new Intent(this,home2.class);
+        Intent intent =new Intent(this, home2.class);
         startActivity(intent);
         finish();
 

@@ -1,4 +1,4 @@
-package com.example.jamminbaru;
+package com.example.jamminbaru.ControllerUser;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.example.jamminbaru.R;
 
 public class Playlist extends AppCompatActivity {
     private ImageButton home;

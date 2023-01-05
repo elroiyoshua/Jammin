@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.LoginUser">
+    tools:context=".creator.LoginCreator">
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,28 +23,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lexendregular"
-        android:text="Login as User"
+        android:text="Login as Creator"
         android:textColor="@color/black"
         android:textSize="24dp"
         android:textStyle="bold"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintHorizontal_bias="0.253"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.307" />
 
     <TextView
-        android:id="@+id/loginAsCreator"
+        android:id="@+id/loginAsUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="126dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="142dp"
+        android:layout_marginBottom="121dp"
         android:fontFamily="@font/lexendregular"
-        android:text="LOGIN AS CREATOR"
+        android:text="LOGIN AS USER"
         android:textColor="@color/purple_200"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,11 +54,9 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/usernameUser"
+        android:id="@+id/usernameCreator"
         android:layout_width="300dp"
         android:layout_height="48dp"
-
-
         android:background="@drawable/input_bg"
         android:drawablePadding="10dp"
         android:fontFamily="@font/lexendregular"
@@ -75,11 +73,10 @@
         app:layout_constraintVertical_bias="0.433" />
 
     <EditText
-        android:id="@+id/passwordUser"
+        android:id="@+id/passwordCreator"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_margin="10dp"
-
         android:background="@drawable/input_bg"
         android:drawablePadding="10dp"
         android:fontFamily="@font/lexendregular"
@@ -97,10 +94,10 @@
         app:layout_constraintVertical_bias="0.525" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbuttonUser"
+        android:id="@+id/loginbuttonCreator"
         android:layout_width="300dp"
         android:layout_height="56dp"
-        android:layout_below="@id/passwordUser"
+        android:layout_below="@id/passwordCreator"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/purple_200"
         android:fontFamily="@font/lexendregular"
@@ -130,7 +127,7 @@
         app:layout_constraintVertical_bias="0.719" />
 
     <Button
-        android:id="@+id/signupDirectUser"
+        android:id="@+id/signupDirectCreator"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="75dp"
         android:layout_height="30dp"
@@ -153,9 +150,9 @@
         android:layout_marginStart="200dp"
         android:layout_marginTop="26dp"
         android:layout_marginEnd="198dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="11dp"
         android:text="or"
-        app:layout_constraintBottom_toTopOf="@+id/loginAsCreator"
+        app:layout_constraintBottom_toTopOf="@+id/loginAsUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"

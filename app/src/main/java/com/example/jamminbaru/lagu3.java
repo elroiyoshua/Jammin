@@ -13,6 +13,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jamminbaru.ControllerUser.Home;
+
 public class lagu3 extends AppCompatActivity {
     private ImageView playpause;
     private TextView waktu,waktutotal;
@@ -79,7 +81,7 @@ public class lagu3 extends AppCompatActivity {
 
     }
     public void GoHome(View v){
-        Intent intent =new Intent(this,Home.class);
+        Intent intent =new Intent(this, Home.class);
         startActivity(intent);
         mediaPlayer.pause();
         finish();

@@ -1,4 +1,4 @@
-package com.example.jamminbaru;
+package com.example.jamminbaru.user;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,13 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.jamminbaru.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class SignUp extends AppCompatActivity {
+public class RegisterUser extends AppCompatActivity {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jamminapp-f2693-default-rtdb.firebaseio.com/");
 
@@ -25,12 +26,12 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        final EditText edit_phone = findViewById(R.id.phoneText);
-        final EditText edit_email = findViewById(R.id.emailText);
-        final EditText edit_password = findViewById(R.id.passwordText);
-        final EditText edit_confirmPassword = findViewById(R.id.passwordConfirmText);
+        final EditText edit_phone = findViewById(R.id.phoneTextUser);
+        final EditText edit_email = findViewById(R.id.emailTextUser);
+        final EditText edit_password = findViewById(R.id.passwordTextUser);
+        final EditText edit_confirmPassword = findViewById(R.id.passwordConfirmTextUser);
 
-        Button register_btn = findViewById(R.id.register_btn);
+        Button register_btn = findViewById(R.id.register_btnUser);
 
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,20 +58,20 @@ public class SignUp extends AppCompatActivity {
                     edit_confirmPassword.setError("Password didn't Match");
                 }else{
 
-                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    databaseReference.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             //Apakah user terdaftar
                             if(snapshot.hasChild(phoneTxt)){
-                                Toast.makeText(SignUp.this, "User Already Registered", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterUser.this, "User Already Registered", Toast.LENGTH_SHORT).show();
                             }
                             else{
-                                databaseReference.child("users").child(phoneTxt).child("Email").setValue(emailTxt);
-                                databaseReference.child("users").child(phoneTxt).child("Password").setValue(passwordTxt);
-                                databaseReference.child("users").child(phoneTxt).child("Confirm Password").setValue(passwordConfirmTxt);
+                                databaseReference.child("User").child(phoneTxt).child("Email").setValue(emailTxt);
+                                databaseReference.child("User").child(phoneTxt).child("Password").setValue(passwordTxt);
+                                databaseReference.child("User").child(phoneTxt).child("Confirm Password").setValue(passwordConfirmTxt);
 
-                                Toast.makeText(SignUp.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SignUp.this, Login.class));
+                                Toast.makeText(RegisterUser.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(RegisterUser.this, LoginUser.class));
                                 finish();
                             }
                         }
@@ -88,7 +89,7 @@ public class SignUp extends AppCompatActivity {
         });
     }
     public void GoLogin(View v){
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(this, LoginUser.class);
         startActivity(intent);
         finish();
     }
