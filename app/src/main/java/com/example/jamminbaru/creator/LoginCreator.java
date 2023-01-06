@@ -1,4 +1,4 @@
-package com.example.jamminbaru;
+package com.example.jamminbaru.creator;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,25 +8,42 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jamminbaru.ControllerCreator.HomeCreator;
+import com.example.jamminbaru.ControllerUser.Home;
+import com.example.jamminbaru.R;
+import com.example.jamminbaru.user.LoginUser;
+import com.example.jamminbaru.user.RegisterUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Login extends AppCompatActivity {
+public class LoginCreator extends AppCompatActivity {
+
+    TextView loginAsUser;
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jamminapp-f2693-default-rtdb.firebaseio.com/");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_creator);
 
-        final EditText username = findViewById(R.id.username);
-        final EditText password = findViewById(R.id.password);
-        final Button login_Btn = findViewById(R.id.loginbutton);
+        final EditText username = findViewById(R.id.usernameCreator);
+        final EditText password = findViewById(R.id.passwordCreator);
+        final Button login_Btn = findViewById(R.id.loginbuttonCreator);
+
+        loginAsUser =(TextView)findViewById(R.id.loginAsUser);
+        loginAsUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(LoginCreator.this, com.example.jamminbaru.user.LoginUser.class);
+                startActivity(intent);
+            }
+        });
 
         login_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +58,7 @@ public class Login extends AppCompatActivity {
                 if(passwordTxt.isEmpty()){
                     password.setError("Enter Password");
                 }else{
-                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    databaseReference.child("Creator").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.hasChild(usernameTxt)){
@@ -49,17 +66,17 @@ public class Login extends AppCompatActivity {
                                 final String getPassword = snapshot.child(usernameTxt).child("Password").getValue(String.class);
 
                                 if(getPassword.equals(passwordTxt)){
-                                    Toast.makeText(Login.this, "Successfully Login", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginCreator.this, "Successfully Login", Toast.LENGTH_SHORT).show();
 
-                                    Intent intent = new Intent(Login.this, Home.class);
+                                    Intent intent = new Intent(LoginCreator.this, HomeCreator.class);
                                     intent.putExtra("usernameTag", usernameTxt);
                                     startActivity(intent);
 
                                 }else{
-                                    Toast.makeText(Login.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginCreator.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
                                 }
                             }else{
-                                Toast.makeText(Login.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginCreator.this, "Username or Password Incorrect", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -72,16 +89,15 @@ public class Login extends AppCompatActivity {
 
             }
         });
-
-
     }
+
     public void GoSignup(View v){
-        Intent intent = new Intent(this, SignUp.class);
+        Intent intent = new Intent(this, RegisterCreator.class);
         startActivity(intent);
         finish();
     }
     public void GoHome(View v){
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(this, HomeCreator.class);
         startActivity(intent);
         finish();
     }

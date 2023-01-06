@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ControllerUser.Profile">
+    tools:context=".ControllerCreator.ProfileCreator">
 
     <ImageView
         android:id="@+id/profileimg"
@@ -43,18 +43,18 @@
 
 
     <!--    <TextView-->
-<!--        android:id="@+id/usernameTag"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="18dp"-->
-<!--        android:layout_marginEnd="195dp"-->
-<!--        android:text="none"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/textView"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.422" />-->
+    <!--        android:id="@+id/usernameTag"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="18dp"-->
+    <!--        android:layout_marginEnd="195dp"-->
+    <!--        android:text="none"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="1.0"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/textView"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.422" />-->
 
     <Button
         android:id="@+id/logoutDirectLogin"
@@ -73,11 +73,12 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="4dp"
+        android:onClick="GoHome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/rumah"
-        android:onClick="GoHome"
-        />
+        app:srcCompat="@drawable/rumah" />
 
     <ImageButton
         android:id="@+id/profileLogo3"
@@ -88,22 +89,8 @@
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.715"
         app:layout_constraintStart_toEndOf="@+id/homeLogo3"
         app:srcCompat="@drawable/user2" />
-
-    <ImageButton
-        android:id="@+id/playlistLogo3"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/homeLogo3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/playlistku"
-        android:onClick="GoPlaylist"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
