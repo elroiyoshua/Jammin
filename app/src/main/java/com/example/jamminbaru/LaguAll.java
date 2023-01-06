@@ -19,6 +19,9 @@ public class LaguAll extends AppCompatActivity {
     private SeekBar seekbar;
     private MediaPlayer mediaPlayer;
     private Handler handler = new Handler();
+    String data1,data2;
+//    String url = getIntent().getStringExtra("URL");
+
 
 //    private  int savedwaktu;
 
@@ -31,7 +34,17 @@ public class LaguAll extends AppCompatActivity {
         waktutotal = findViewById(R.id.waktutotal);
         seekbar = findViewById(R.id.seekbar);
         mediaPlayer = new MediaPlayer();
+        String judul = getIntent().getStringExtra("JUDUL");
+        String band = getIntent().getStringExtra("BAND");
+        //String url = getIntent().getStringExtra("URL");
+        int image = getIntent().getIntExtra("IMAGES",0);
+        TextView judullagu = findViewById(R.id.maintitle);
+        TextView bandlagu = findViewById(R.id.mainband);
+        ImageView gambarlagu = findViewById(R.id.mainimageview);
 
+        judullagu.setText(judul);
+        bandlagu.setText(band);
+        gambarlagu.setImageResource(image);
         seekbar.setMax(100);
         playpause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,10 +116,23 @@ public class LaguAll extends AppCompatActivity {
         finish();
 
     }
+//    private  void getData(){
+//        if(getIntent().hasExtra("images")&& getIntent().hasExtra("data1")&& getIntent().hasExtra("data2")){
+//            data1 = getIntent().getStringExtra("data1");
+//            data2 = getIntent().getStringExtra("data2");
+//            images = getIntent().getIntExtra("images",1);
+//        }else{
+//            Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
+//
+
 
     private void prepareMediaPlayer(){
+        String url = getIntent().getStringExtra("URL");
         try {
-            mediaPlayer.setDataSource("https://firebasestorage.googleapis.com/v0/b/jamminapp-f2693.appspot.com/o/Paramore_%20This%20Is%20Why%20%5BOFFICIAL%20VIDEO%5D.mp3?alt=media&token=38a37bde-40f8-4739-a96c-90f9e5d02a38");
+            mediaPlayer.setDataSource(url);
             mediaPlayer.prepare();
             waktutotal.setText(milisecondstotimer(mediaPlayer.getDuration()));
         }catch (Exception exception){

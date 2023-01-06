@@ -75,7 +75,7 @@ public class Home extends AppCompatActivity {
         finish();
 
     }
-
+//
 //    public void GoPlaylist(View v){
 //        Intent intent =new Intent(this,Playlist.class);
 //        startActivity(intent);
