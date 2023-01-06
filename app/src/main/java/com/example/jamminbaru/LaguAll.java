@@ -2,7 +2,9 @@ package com.example.jamminbaru;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,7 +18,8 @@ import android.widget.Toast;
 public class LaguAll extends AppCompatActivity {
     private ImageView playpause;
     private TextView waktu,waktutotal;
-    private SeekBar seekbar;
+    private SeekBar seekbar, seekBarVolume;
+    AudioManager audioManager;
     private MediaPlayer mediaPlayer;
     private Handler handler = new Handler();
     String data1,data2;
@@ -103,6 +106,33 @@ public class LaguAll extends AppCompatActivity {
                 waktutotal.setText(R.string.zero);
                 mediaPlayer.reset();
                 prepareMediaPlayer();
+            }
+        });
+
+        // seekBar volume
+        seekBarVolume = findViewById(R.id.seekBarVolume);
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
+        int maxVol = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int currVol = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+
+        seekBarVolume.setMax(maxVol);
+        seekBarVolume.setProgress(currVol);
+
+        seekBarVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,i,0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 
