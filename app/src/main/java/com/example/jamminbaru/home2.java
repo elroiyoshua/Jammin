@@ -19,7 +19,7 @@ public class home2 extends AppCompatActivity implements recyclerviewinterface{
             "https://firebasestorage.googleapis.com/v0/b/jamminapp-f2693.appspot.com/o/Bury%20The%20Light%20-%20Approaching%20Storm%20Mix%20(Added%20rain%20_%20alternate%20intro).mp3?alt=media&token=704112b3-d922-47c9-b244-db5c1fdf4b13",
     "https://firebasestorage.googleapis.com/v0/b/jamminapp-f2693.appspot.com/o/Ariis%20-%20GOOFY%20PHONK.mp3?alt=media&token=9ed3ad8f-f1e8-47f8-b842-0c62a6793282",
     "shorturl.at/nzCH6","shorturl.at/nzCH6","shorturl.at/nzCH6","shorturl.at/nzCH6","shorturl.at/nzCH6","shorturl.at/nzCH6","shorturl.at/nzCH6"};
-
+    int[] posisi = {0,1,2,3,4,5,6,7,8,9};
     RecyclerView recyclerView;
 
     @Override
@@ -36,13 +36,15 @@ public class home2 extends AppCompatActivity implements recyclerviewinterface{
         String[] judullagu = getResources().getStringArray(R.array.Judul);
         String[] bandlagu = getResources().getStringArray(R.array.Band);
         for (int i = 0;i < judullagu.length;i++){
-            lagumodels.add(new lagumodel(judullagu[i],bandlagu[i],images[i],url[i]));
+            lagumodels.add(new lagumodel(judullagu[i],bandlagu[i],images[i],url[i]));//,posisi[i]));
         }
     }
 
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(home2.this, LaguAll.class);
+        MyMediaPlayer.currentindex = position;
+        //intent.putExtra("POSISI",lagumodels.get(position).getPosisi());
         intent.putExtra("JUDUL",lagumodels.get(position).getJudul());
         intent.putExtra("BAND",lagumodels.get(position).getBand());
         intent.putExtra("IMAGES",lagumodels.get(position).getImage());

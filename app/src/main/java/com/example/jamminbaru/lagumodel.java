@@ -2,7 +2,7 @@ package com.example.jamminbaru;
 
 public class lagumodel {
     String judul,band,url;
-    int image;
+    int image;//,posisi;
 
     public String getJudul() {
         return judul;
@@ -20,10 +20,15 @@ public class lagumodel {
         return url;
     }
 
-    public lagumodel(String judul, String band, int image, String url) {
+//        public int getPosisi() {
+//            return posisi;
+//        }
+
+    public lagumodel(String judul, String band, int image, String url){//,int posisi) {
         this.judul = judul;
         this.band = band;
         this.image = image;
         this.url = url;
+        //this.posisi = posisi;
     }
 }

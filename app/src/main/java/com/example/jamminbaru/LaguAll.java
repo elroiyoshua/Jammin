@@ -13,38 +13,40 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LaguAll extends AppCompatActivity {
-    private ImageView playpause;
+import java.util.ArrayList;
+
+public class LaguAll extends AppCompatActivity{
+    private ImageView playpause,prev,next;
     private TextView waktu,waktutotal;
     private SeekBar seekbar;
     private MediaPlayer mediaPlayer;
     private Handler handler = new Handler();
-    String data1,data2;
-//    String url = getIntent().getStringExtra("URL");
 
 
-//    private  int savedwaktu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lagu_all);
         playpause = findViewById(R.id.playpause);
+        prev = (ImageView) findViewById(R.id.prev);
+        next = (ImageView) findViewById(R.id.next);
         waktu = findViewById(R.id.waktu);
         waktutotal = findViewById(R.id.waktutotal);
         seekbar = findViewById(R.id.seekbar);
         mediaPlayer = new MediaPlayer();
-        String judul = getIntent().getStringExtra("JUDUL");
-        String band = getIntent().getStringExtra("BAND");
-        //String url = getIntent().getStringExtra("URL");
-        int image = getIntent().getIntExtra("IMAGES",0);
-        TextView judullagu = findViewById(R.id.maintitle);
-        TextView bandlagu = findViewById(R.id.mainband);
-        ImageView gambarlagu = findViewById(R.id.mainimageview);
-
-        judullagu.setText(judul);
-        bandlagu.setText(band);
-        gambarlagu.setImageResource(image);
+//        String judul = getIntent().getStringExtra("JUDUL");
+//        String band = getIntent().getStringExtra("BAND");
+//
+//        int image = getIntent().getIntExtra("IMAGES",0);
+//        TextView judullagu = findViewById(R.id.maintitle);
+//        TextView bandlagu = findViewById(R.id.mainband);
+//        ImageView gambarlagu = findViewById(R.id.mainimageview);
+//
+//        judullagu.setText(judul);
+//        bandlagu.setText(band);
+//        gambarlagu.setImageResource(image);
+        setResourcesSong();
         seekbar.setMax(100);
         playpause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,19 +118,38 @@ public class LaguAll extends AppCompatActivity {
         finish();
 
     }
-//    private  void getData(){
-//        if(getIntent().hasExtra("images")&& getIntent().hasExtra("data1")&& getIntent().hasExtra("data2")){
-//            data1 = getIntent().getStringExtra("data1");
-//            data2 = getIntent().getStringExtra("data2");
-//            images = getIntent().getIntExtra("images",1);
-//        }else{
-//            Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show();
-//        }
-//
-//    }
-//
+    public  void setResourcesSong(){
+        String judul = getIntent().getStringExtra("JUDUL");
+        String band = getIntent().getStringExtra("BAND");
 
+        int image = getIntent().getIntExtra("IMAGES",0);
+        TextView judullagu = findViewById(R.id.maintitle);
+        TextView bandlagu = findViewById(R.id.mainband);
+        ImageView gambarlagu = findViewById(R.id.mainimageview);
 
+        judullagu.setText(judul);
+        bandlagu.setText(band);
+        gambarlagu.setImageResource(image);
+        next.setOnClickListener(v->playNext());
+        prev.setOnClickListener(v->playPrev());
+    }
+
+    private  void   playNext(){
+        if(MyMediaPlayer.currentindex == 9){
+            return;
+        }
+        MyMediaPlayer.currentindex += 1;
+        mediaPlayer.reset();
+        setResourcesSong();
+    }
+    private void playPrev(){
+        if(MyMediaPlayer.currentindex == 0){
+            return;
+        }
+        MyMediaPlayer.currentindex -= 1;
+        mediaPlayer.reset();
+        setResourcesSong();
+    }
     private void prepareMediaPlayer(){
         String url = getIntent().getStringExtra("URL");
         try {

@@ -21,7 +21,7 @@
         android:id="@+id/playpause"
         android:layout_width="91dp"
         android:layout_height="57dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:src="@drawable/ic_baseline_play_arrow_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,4 +107,28 @@
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/maintitle" />
+
+    <ImageView
+        android:id="@+id/prev"
+        android:layout_width="57dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="176dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/playpause"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_skip_previous_24" />
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="57dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="176dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/playpause"
+        app:srcCompat="@drawable/ic_baseline_skip_next_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
