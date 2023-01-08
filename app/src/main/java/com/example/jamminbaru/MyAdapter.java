@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private  final recyclerviewinterface recyclerviewinterface;
@@ -29,6 +30,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             this.recyclerviewinterface = recyclerviewinterface;
 
     }
+    protected void  setFilteredlist(ArrayList<lagumodel> filteredlist){
+        this.lagumodels = filteredlist;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
