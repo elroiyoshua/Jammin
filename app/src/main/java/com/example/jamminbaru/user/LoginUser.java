@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jamminbaru.ControllerUser.Home;
+import com.example.jamminbaru.ControllerUser.HomeUser;
 import com.example.jamminbaru.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,7 +30,7 @@ public class LoginUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_user);
 
         final EditText username = findViewById(R.id.usernameUser);
         final EditText password = findViewById(R.id.passwordUser);
@@ -68,7 +68,7 @@ public class LoginUser extends AppCompatActivity {
                                 if(getPassword.equals(passwordTxt)){
                                     Toast.makeText(LoginUser.this, "Successfully Login", Toast.LENGTH_SHORT).show();
 
-                                    Intent intent = new Intent(LoginUser.this, Home.class);
+                                    Intent intent = new Intent(LoginUser.this, HomeUser.class);
                                     intent.putExtra("usernameTag", usernameTxt);
                                     startActivity(intent);
 
@@ -98,7 +98,7 @@ public class LoginUser extends AppCompatActivity {
         finish();
     }
     public void GoHome(View v){
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(this, HomeUser.class);
         startActivity(intent);
         finish();
     }

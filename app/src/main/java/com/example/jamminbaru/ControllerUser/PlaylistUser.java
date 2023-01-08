@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 
 import com.example.jamminbaru.R;
 
-public class Playlist extends AppCompatActivity {
+public class PlaylistUser extends AppCompatActivity {
     private ImageButton home;
     private ImageButton profile;
 
@@ -18,13 +18,13 @@ public class Playlist extends AppCompatActivity {
         String usernameTxt = getIntent().getStringExtra("usernameTag");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_playlist);
+        setContentView(R.layout.activity_playlist_user);
 
         profile = (ImageButton) findViewById(R.id.profileLogo2);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Playlist.this, Profile.class);
+                Intent intent = new Intent(PlaylistUser.this, ProfileUser.class);
                 intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
@@ -34,7 +34,7 @@ public class Playlist extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Playlist.this, Home.class);
+                Intent intent = new Intent(PlaylistUser.this, HomeUser.class);
                 intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }

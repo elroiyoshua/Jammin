@@ -13,7 +13,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jamminbaru.ControllerUser.Home;
+import com.example.jamminbaru.ControllerUser.HomeUser;
 
 public class lagu2 extends AppCompatActivity {
     private ImageView playpause;
@@ -81,7 +81,7 @@ public class lagu2 extends AppCompatActivity {
 
     }
     public void GoHome(View v){
-        Intent intent =new Intent(this, Home.class);
+        Intent intent =new Intent(this, HomeUser.class);
         startActivity(intent);
         mediaPlayer.pause();
         finish();
