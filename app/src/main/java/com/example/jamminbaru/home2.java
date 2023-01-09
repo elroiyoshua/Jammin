@@ -65,7 +65,7 @@ public class home2 extends AppCompatActivity implements recyclerviewinterface{
 
         }else  {
             for(lagumodel lagu : lagumodels){
-                if(lagu.getJudul().toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))){
+                if(lagu.getJudul().toLowerCase().contains(text.toLowerCase())){
                     filteredlist.add(lagu);
                 }
             }
@@ -81,17 +81,17 @@ public class home2 extends AppCompatActivity implements recyclerviewinterface{
         String[] judullagu = getResources().getStringArray(R.array.Judul);
         String[] bandlagu = getResources().getStringArray(R.array.Band);
         for (int i = 0;i < judullagu.length;i++){
-            lagumodels.add(new lagumodel(judullagu[i],bandlagu[i],images[i],url[i]));
+            lagumodels.add(new lagumodel(judullagu[i],bandlagu[i],url[i],images[i]));
         }
     }
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClick(lagumodel lagu) {
         Intent intent = new Intent(home2.this, LaguAll.class);
-        intent.putExtra("JUDUL",lagumodels.get(position).getJudul());
-        intent.putExtra("BAND",lagumodels.get(position).getBand());
-        intent.putExtra("IMAGES",lagumodels.get(position).getImage());
-        intent.putExtra("URL",lagumodels.get(position).getUrl());
+        intent.putExtra("JUDUL",lagu.getJudul());
+        intent.putExtra("BAND",lagu.getBand());
+        intent.putExtra("IMAGES",lagu.getImage());
+        intent.putExtra("URL",lagu.getUrl());
 
         startActivity(intent);
 

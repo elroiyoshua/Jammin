@@ -19,16 +19,16 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private  final recyclerviewinterface recyclerviewinterface;
-    ArrayList<lagumodel> lagumodels;
+    static ArrayList<lagumodel> lagumodels;
     //String URL[];
     Context context;
-
+    List<lagumodel> filteredlist;
 
     public MyAdapter(Context context, ArrayList<lagumodel> lagumodels,recyclerviewinterface recyclerviewinterface){
             this.context = context;
             this.lagumodels = lagumodels;
             this.recyclerviewinterface = recyclerviewinterface;
-
+            //this.filteredlist = filteredlist;
     }
     protected void  setFilteredlist(ArrayList<lagumodel> filteredlist){
         this.lagumodels = filteredlist;
@@ -69,11 +69,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     if(recyclerviewinterface != null){
                         int pos = getAdapterPosition();
 
                         if(pos != RecyclerView.NO_POSITION){
-                            recyclerviewinterface.onItemClick(pos);
+                            recyclerviewinterface.onItemClick(lagumodels.get(getAdapterPosition()));
                         }
                     }
                 }

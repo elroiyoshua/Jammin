@@ -20,7 +20,7 @@ public class lagumodel {
         return url;
     }
 
-    public lagumodel(String judul, String band, int image, String url) {
+    public lagumodel(String judul, String band, String url, int image) {
         this.judul = judul;
         this.band = band;
         this.image = image;
