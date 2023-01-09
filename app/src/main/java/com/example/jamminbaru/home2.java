@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class home2 extends AppCompatActivity implements recyclerviewinterface{
 
     recyclerviewinterface recyclerviewinterface;
 
+    ImageButton rec1, rec2, rec3;
     RecyclerView recyclerView;
     private SearchView searchView;
     MyAdapter searchAdapter;
@@ -55,6 +57,47 @@ public class home2 extends AppCompatActivity implements recyclerviewinterface{
             public boolean onQueryTextChange(String newText) {
                 filterlist(newText);
                 return true;
+            }
+        });
+
+        rec1 = (ImageButton) findViewById(R.id.imageButton2);
+        rec2 = (ImageButton) findViewById(R.id.imageButton3);
+        rec3 = (ImageButton) findViewById(R.id.imageButton4);
+
+
+        rec1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(home2.this, LaguAll.class);
+                intent.putExtra("JUDUL", "This Is Why");
+                intent.putExtra("BAND", "Paramore");
+                intent.putExtra("IMAGES", R.drawable.cover1);
+                intent.putExtra("URL","https://firebasestorage.googleapis.com/v0/b/jamminapp-f2693.appspot.com/o/Paramore_%20This%20Is%20Why%20%5BOFFICIAL%20VIDEO%5D.mp3?alt=media&token=38a37bde-40f8-4739-a96c-90f9e5d02a38");
+                startActivity(intent);
+            }
+        });
+
+        rec2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(home2.this, LaguAll.class);
+                intent.putExtra("JUDUL", "Approaching Storm");
+                intent.putExtra("BAND", "Burry The Light");
+                intent.putExtra("IMAGES", R.drawable.cover2);
+                intent.putExtra("URL","https://firebasestorage.googleapis.com/v0/b/jamminapp-f2693.appspot.com/o/Bury%20The%20Light%20-%20Approaching%20Storm%20Mix%20(Added%20rain%20_%20alternate%20intro).mp3?alt=media&token=704112b3-d922-47c9-b244-db5c1fdf4b13");
+                startActivity(intent);
+            }
+        });
+
+        rec3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(home2.this, LaguAll.class);
+                intent.putExtra("JUDUL", "Goofy Phonk");
+                intent.putExtra("BAND", "Ariis");
+                intent.putExtra("IMAGES", R.drawable.cover3);
+                intent.putExtra("URL","https://firebasestorage.googleapis.com/v0/b/jamminapp-f2693.appspot.com/o/Ariis%20-%20GOOFY%20PHONK.mp3?alt=media&token=9ed3ad8f-f1e8-47f8-b842-0c62a6793282");
+                startActivity(intent);
             }
         });
     }
