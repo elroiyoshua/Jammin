@@ -1,13 +1,9 @@
 package com.example.jamminbaru.Model;
 
-public class ModelProfileUser {
+public class ModelProfileCreator {
     private String imageUrl;
 
-//    public ModelProfileUser(){
-//
-//    }
-
-    public ModelProfileUser(String imageUrl){
+    public ModelProfileCreator(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 

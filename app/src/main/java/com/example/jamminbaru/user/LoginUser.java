@@ -12,7 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jamminbaru.ControllerUser.HomeUser;
+import com.example.jamminbaru.Model.ModelUser;
 import com.example.jamminbaru.R;
+import com.example.jamminbaru.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginUser extends AppCompatActivity {
 
     TextView loginAsCreator;
+
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jamminapp-f2693-default-rtdb.firebaseio.com/");
     @Override
@@ -67,9 +70,9 @@ public class LoginUser extends AppCompatActivity {
 
                                 if(getPassword.equals(passwordTxt)){
                                     Toast.makeText(LoginUser.this, "Successfully Login", Toast.LENGTH_SHORT).show();
-
+                                    user.setPhoneTxt(usernameTxt);
+                                    //user.getPhoneTxt();
                                     Intent intent = new Intent(LoginUser.this, HomeUser.class);
-                                    intent.putExtra("usernameTag", usernameTxt);
                                     startActivity(intent);
 
                                 }else{
@@ -92,14 +95,18 @@ public class LoginUser extends AppCompatActivity {
 
 
     }
+
     public void GoSignup(View v){
         Intent intent = new Intent(this, RegisterUser.class);
         startActivity(intent);
         finish();
     }
+
     public void GoHome(View v){
         Intent intent = new Intent(this, HomeUser.class);
         startActivity(intent);
         finish();
     }
+
+    public static ModelUser user = new ModelUser("default");
 }

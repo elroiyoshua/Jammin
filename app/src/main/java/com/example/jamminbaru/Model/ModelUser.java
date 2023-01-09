@@ -1,9 +1,9 @@
-package com.example.jamminbaru;
+package com.example.jamminbaru.Model;
 
-public class User {
+public class ModelUser {
     private String phoneTxt = "nama";
 
-    public User(String phoneTxt) {
+    public ModelUser(String phoneTxt) {
         this.phoneTxt = phoneTxt;
     }
 
@@ -14,8 +14,4 @@ public class User {
     public void setPhoneTxt(String phoneTxt) {
         this.phoneTxt = phoneTxt;
     }
-
-//    public void addUser(String phoneTxt){
-//        Array[0] = phoneTxt;
-//    }
 }
