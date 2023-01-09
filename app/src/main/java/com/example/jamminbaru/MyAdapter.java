@@ -30,7 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             this.recyclerviewinterface = recyclerviewinterface;
             //this.filteredlist = filteredlist;
     }
-    protected void  setFilteredlist(ArrayList<lagumodel> filteredlist){
+    public void  setFilteredlist(ArrayList<lagumodel> filteredlist){
         this.lagumodels = filteredlist;
     }
 

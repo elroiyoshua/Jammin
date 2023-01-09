@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.example.jamminbaru.ControllerUser.HomeUser;
 import com.example.jamminbaru.Model.ModelUser;
 import com.example.jamminbaru.R;
-import com.example.jamminbaru.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
