@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jamminbaru.ControllerCreator.HomeCreator;
+import com.example.jamminbaru.Model.ModelCreator;
+import com.example.jamminbaru.Model.ModelUser;
 import com.example.jamminbaru.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -64,9 +66,9 @@ public class LoginCreator extends AppCompatActivity {
 
                                 if(getPassword.equals(passwordTxt)){
                                     Toast.makeText(LoginCreator.this, "Successfully Login", Toast.LENGTH_SHORT).show();
-
+                                    creator.setPhoneTxt(usernameTxt);
+                                    //creator.getPhoneTxt();
                                     Intent intent = new Intent(LoginCreator.this, HomeCreator.class);
-                                    intent.putExtra("usernameTag", usernameTxt);
                                     startActivity(intent);
 
                                 }else{
@@ -93,9 +95,12 @@ public class LoginCreator extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
     public void GoHome(View v){
         Intent intent = new Intent(this, HomeCreator.class);
         startActivity(intent);
         finish();
     }
+
+    public static ModelCreator creator = new ModelCreator("default");
 }

@@ -43,63 +43,91 @@ public class RegisterCreator extends AppCompatActivity {
                 final String passwordConfirmTxt = edit_confirmPassword.getText().toString();
 
 
-                if(phoneTxt.isEmpty() && emailTxt.isEmpty() && passwordTxt.isEmpty() && passwordConfirmTxt.isEmpty()){
-                    edit_phone.setError("Enter Your Username");
+//                if(phoneTxt.isEmpty() && emailTxt.isEmpty() && passwordTxt.isEmpty() && passwordConfirmTxt.isEmpty()){
+//                    edit_phone.setError("Enter Your Username");
+//                    edit_email.setError("Enter Your Email");
+//                    edit_password.setError("Enter Your Password");
+//                    edit_confirmPassword.setError("Enter Your Confirm Password");
+//                }else if(phoneTxt.isEmpty() || emailTxt.isEmpty() || passwordTxt.isEmpty() || passwordConfirmTxt.isEmpty()){
+//                    if(phoneTxt.isEmpty()) {
+//                        edit_phone.setError("Enter Your Username");
+//                    }if(emailTxt.isEmpty()){
+//                        edit_email.setError("Enter Your Email");
+//                    }if(passwordTxt.isEmpty()) {
+//                        edit_password.setError("Enter Your Password");
+//                    }if(passwordConfirmTxt.isEmpty()){
+//                        edit_confirmPassword.setError("Enter Your Confirm Password");
+//                    }if(!passwordTxt.isEmpty()) {
+//                        if (passwordTxt.length() < 8) {
+//                            edit_password.setError("Password too short");
+//                        }
+//                    }if (!phoneTxt.matches("^\\S*$")) {
+//                        edit_phone.setError("Username doesn't contain Space");
+//                    }if (!emailTxt.matches("^\\S*$")) {
+//                        edit_email.setError("Email doesn't contain Space");
+//                    }if (emailTxt.isEmpty()) {
+//                        edit_email.setError("Enter Your Email");
+//                    }if (!Patterns.EMAIL_ADDRESS.matcher(emailTxt).matches()) {
+//                        edit_email.setError("Please Input Valid Email");
+//                    }if (!passwordTxt.equals(passwordConfirmTxt)) {
+//                        edit_confirmPassword.setError("Password didn't Match");
+//                    }
+
+                if (phoneTxt.isEmpty() && emailTxt.isEmpty() && passwordTxt.isEmpty() && passwordConfirmTxt.isEmpty()) {
+                    // All fields are empty
+                    edit_phone.setError("Enter Your Phone");
                     edit_email.setError("Enter Your Email");
                     edit_password.setError("Enter Your Password");
                     edit_confirmPassword.setError("Enter Your Confirm Password");
-                }else if(phoneTxt.isEmpty() || emailTxt.isEmpty() || passwordTxt.isEmpty() || passwordConfirmTxt.isEmpty()){
-                    if(phoneTxt.isEmpty()) {
-                        edit_phone.setError("Enter Your Username");
-                    }if(emailTxt.isEmpty()){
+                } else if (phoneTxt.isEmpty() || emailTxt.isEmpty() || passwordTxt.isEmpty() || passwordConfirmTxt.isEmpty()) {
+                    // Some fields are empty
+                    if (phoneTxt.isEmpty()) {
+                        edit_phone.setError("Enter Your Phone");
+                    }
+                    if (emailTxt.isEmpty()) {
                         edit_email.setError("Enter Your Email");
-                    }if(passwordTxt.isEmpty()) {
+                    }
+                    if (passwordTxt.isEmpty()) {
                         edit_password.setError("Enter Your Password");
-                    }if(passwordConfirmTxt.isEmpty()){
+                    }
+                    if (passwordConfirmTxt.isEmpty()) {
                         edit_confirmPassword.setError("Enter Your Confirm Password");
-                    }if(!passwordTxt.isEmpty()) {
-                        if (passwordTxt.length() < 8) {
-                            edit_password.setError("Password too short");
-                        }
-                    }if (!phoneTxt.matches("^\\S*$")) {
-                        edit_phone.setError("Username doesn't contain Space");
-                    }if (!emailTxt.matches("^\\S*$")) {
-                        edit_email.setError("Email doesn't contain Space");
-                    }if (emailTxt.isEmpty()) {
-                        edit_email.setError("Enter Your Email");
-                    }if (!Patterns.EMAIL_ADDRESS.matcher(emailTxt).matches()) {
-                        edit_email.setError("Please Input Valid Email");
-                    }if (!passwordTxt.equals(passwordConfirmTxt)) {
-                        edit_confirmPassword.setError("Password didn't Match");
                     }
                 }else{
+                    if (passwordTxt.length() < 8) {
+                        edit_password.setError("Password too short");
+                    } else if (!phoneTxt.matches("^\\S*$")) {
+                        edit_phone.setError("Phone doesn't contain Space");
+                    } else if (!emailTxt.matches("^\\S*$")) {
+                        edit_email.setError("Email doesn't contain Space");
+                    } else if (!Patterns.EMAIL_ADDRESS.matcher(emailTxt).matches()) {
+                        edit_email.setError("Please Input Valid Email");
+                    } else if (!passwordTxt.equals(passwordConfirmTxt)) {
+                        edit_confirmPassword.setError("Password didn't Match");
+                    } else {
+                        databaseReference.child("Creator").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                //Apakah user terdaftar
+                                if (snapshot.hasChild(phoneTxt)) {
+                                    Toast.makeText(RegisterCreator.this, "User Already Registered", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    databaseReference.child("Creator").child(phoneTxt).child("Email").setValue(emailTxt);
+                                    databaseReference.child("Creator").child(phoneTxt).child("Password").setValue(passwordTxt);
+                                    databaseReference.child("Creator").child(phoneTxt).child("Confirm Password").setValue(passwordConfirmTxt);
 
-                    databaseReference.child("Creator").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            //Apakah user terdaftar
-                            if(snapshot.hasChild(phoneTxt)){
-                                Toast.makeText(RegisterCreator.this, "User Already Registered", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterCreator.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(RegisterCreator.this, LoginCreator.class));
+                                    finish();
+                                }
                             }
-                            else{
-                                databaseReference.child("Creator").child(phoneTxt).child("Email").setValue(emailTxt);
-                                databaseReference.child("Creator").child(phoneTxt).child("Password").setValue(passwordTxt);
-                                databaseReference.child("Creator").child(phoneTxt).child("Confirm Password").setValue(passwordConfirmTxt);
 
-                                Toast.makeText(RegisterCreator.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(RegisterCreator.this, LoginCreator.class));
-                                finish();
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
                             }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-
-
+                        });
+                    }
                 }
             }
         });

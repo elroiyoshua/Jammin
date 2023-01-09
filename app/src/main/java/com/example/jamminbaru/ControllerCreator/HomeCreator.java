@@ -1,5 +1,7 @@
 package com.example.jamminbaru.ControllerCreator;
 
+import static com.example.jamminbaru.creator.LoginCreator.creator;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,23 +18,25 @@ public class HomeCreator extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String usernameTxt = getIntent().getStringExtra("usernameTag");
+//        String usernameTxt = getIntent().getStringExtra("usernameTag");
+
+        String displayUsername = creator.getPhoneTxt();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_creator);
 
         usernamedisplayTagHome = findViewById(R.id.usernamedisplayTagHome);
+        usernamedisplayTagHome.setText(displayUsername);
 
         profile = (ImageButton) findViewById(R.id.profileLogo);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeCreator.this, ProfileCreator.class);
-                intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
         });
 
-        usernamedisplayTagHome.setText(usernameTxt);
+
     }
 }

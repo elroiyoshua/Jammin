@@ -1,5 +1,7 @@
 package com.example.jamminbaru.ControllerUser;
 
+import static com.example.jamminbaru.user.LoginUser.user;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,16 +44,19 @@ public class ProfileUser extends AppCompatActivity {
     private StorageReference reference = FirebaseStorage.getInstance().getReference();
     private Uri imageUri;
 
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jamminapp-f2693-default-rtdb.firebaseio.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String usernameTxt = getIntent().getStringExtra("usernameTag");
+        //String usernameTxt = getIntent().getStringExtra("usernameTag");
+
+        String displayUsername = user.getPhoneTxt();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_user);
 
         usernameTag = findViewById(R.id.usernameTag);
+        usernameTag.setText(displayUsername);
+
         logoutDirectLogin = (Button) findViewById(R.id.logoutDirectLogin);
         upload_btn = findViewById(R.id.upload_btn);
         imageView = findViewById(R.id.profileimg);
@@ -83,7 +88,7 @@ public class ProfileUser extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(ProfileUser.this, LoginUser.class);
-                intent.putExtra("usernameTag", usernameTxt);
+                //intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
         });
@@ -93,7 +98,7 @@ public class ProfileUser extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProfileUser.this, HomeUser.class);
-                intent.putExtra("usernameTag", usernameTxt);
+                //intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
         });
@@ -103,12 +108,12 @@ public class ProfileUser extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProfileUser.this, PlaylistUser.class);
-                intent.putExtra("usernameTag", usernameTxt);
+                //intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
         });
 
-         usernameTag.setText(usernameTxt);
+
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.example.jamminbaru.ControllerCreator;
 
+import static com.example.jamminbaru.creator.LoginCreator.creator;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -21,19 +23,20 @@ public class ProfileCreator extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String usernameTxt = getIntent().getStringExtra("usernameTag");
+
+        String displayUsername = creator.getPhoneTxt();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_creator);
 
         usernameTag = findViewById(R.id.usernameTag);
-        logoutDirectLogin = (Button) findViewById(R.id.logoutDirectLogin);
+        usernameTag.setText(displayUsername);
 
+        logoutDirectLogin = (Button) findViewById(R.id.logoutDirectLogin);
         logoutDirectLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(ProfileCreator.this, LoginCreator.class);
-                intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
         });
@@ -43,13 +46,8 @@ public class ProfileCreator extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProfileCreator.this, HomeCreator.class);
-                intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
         });
-
-
-
-        usernameTag.setText(usernameTxt);
     }
 }
