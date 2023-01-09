@@ -40,16 +40,13 @@ public class ProfileUser extends AppCompatActivity {
     private Button upload_btn;
     private ImageView imageView;
     private ProgressBar progressBar;
-    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("Profile_Image");
-    private StorageReference reference = FirebaseStorage.getInstance().getReference();
+    final private String displayUsername = user.getPhoneTxt();
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("User").child(displayUsername).child("Profile_Image");
+    private StorageReference reference = FirebaseStorage.getInstance().getReference().child("User").child(displayUsername).child("Profile_Image");
     private Uri imageUri;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //String usernameTxt = getIntent().getStringExtra("usernameTag");
-
-        String displayUsername = user.getPhoneTxt();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_user);
@@ -88,7 +85,6 @@ public class ProfileUser extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(ProfileUser.this, LoginUser.class);
-                //intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
         });
@@ -98,7 +94,6 @@ public class ProfileUser extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProfileUser.this, HomeUser.class);
-                //intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
         });
@@ -108,12 +103,9 @@ public class ProfileUser extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProfileUser.this, PlaylistUser.class);
-                //intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override
