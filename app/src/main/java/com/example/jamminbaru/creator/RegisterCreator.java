@@ -5,14 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.jamminbaru.R;
-import com.example.jamminbaru.user.LoginUser;
-import com.example.jamminbaru.user.RegisterUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,20 +43,35 @@ public class RegisterCreator extends AppCompatActivity {
                 final String passwordConfirmTxt = edit_confirmPassword.getText().toString();
 
 
-                if(phoneTxt.isEmpty()) {
+                if(phoneTxt.isEmpty() && emailTxt.isEmpty() && passwordTxt.isEmpty() && passwordConfirmTxt.isEmpty()){
                     edit_phone.setError("Enter Your Username");
-                }if(emailTxt.isEmpty()){
                     edit_email.setError("Enter Your Email");
-                }if(passwordTxt.isEmpty()) {
                     edit_password.setError("Enter Your Password");
-                }if(!passwordTxt.isEmpty()) {
-                    if(passwordTxt.length()<8){
-                        edit_password.setError("Password too short");
-                    }
-                }if(passwordConfirmTxt.isEmpty()){
                     edit_confirmPassword.setError("Enter Your Confirm Password");
-                }else if(!passwordTxt.equals(passwordConfirmTxt)) {
-                    edit_confirmPassword.setError("Password didn't Match");
+                }else if(phoneTxt.isEmpty() || emailTxt.isEmpty() || passwordTxt.isEmpty() || passwordConfirmTxt.isEmpty()){
+                    if(phoneTxt.isEmpty()) {
+                        edit_phone.setError("Enter Your Username");
+                    }if(emailTxt.isEmpty()){
+                        edit_email.setError("Enter Your Email");
+                    }if(passwordTxt.isEmpty()) {
+                        edit_password.setError("Enter Your Password");
+                    }if(passwordConfirmTxt.isEmpty()){
+                        edit_confirmPassword.setError("Enter Your Confirm Password");
+                    }if(!passwordTxt.isEmpty()) {
+                        if (passwordTxt.length() < 8) {
+                            edit_password.setError("Password too short");
+                        }
+                    }if (!phoneTxt.matches("^\\S*$")) {
+                        edit_phone.setError("Username doesn't contain Space");
+                    }if (!emailTxt.matches("^\\S*$")) {
+                        edit_email.setError("Email doesn't contain Space");
+                    }if (emailTxt.isEmpty()) {
+                        edit_email.setError("Enter Your Email");
+                    }if (!Patterns.EMAIL_ADDRESS.matcher(emailTxt).matches()) {
+                        edit_email.setError("Please Input Valid Email");
+                    }if (!passwordTxt.equals(passwordConfirmTxt)) {
+                        edit_confirmPassword.setError("Password didn't Match");
+                    }
                 }else{
 
                     databaseReference.child("Creator").addListenerForSingleValueEvent(new ValueEventListener() {

@@ -72,21 +72,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ControllerUser.Profile"
+            android:name=".ControllerUser.ProfileUser"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ControllerUser.Playlist"
+            android:name=".ControllerUser.PlaylistUser"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ControllerUser.Home"
+            android:name=".ControllerUser.HomeUser"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

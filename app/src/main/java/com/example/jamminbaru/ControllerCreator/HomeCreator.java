@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.jamminbaru.ControllerUser.Home;
-import com.example.jamminbaru.ControllerUser.Profile;
 import com.example.jamminbaru.R;
 
 public class HomeCreator extends AppCompatActivity {

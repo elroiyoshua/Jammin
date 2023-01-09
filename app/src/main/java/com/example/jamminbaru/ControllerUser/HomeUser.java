@@ -14,7 +14,7 @@ import com.example.jamminbaru.lagu1;
 import com.example.jamminbaru.lagu2;
 import com.example.jamminbaru.lagu3;
 
-public class Home extends AppCompatActivity {
+public class HomeUser extends AppCompatActivity {
     private ImageButton playlist;
     private ImageButton profile;
     private TextView usernamedisplayTagHome;
@@ -33,7 +33,7 @@ public class Home extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Home.this, Profile.class);
+                Intent intent = new Intent(HomeUser.this, ProfileUser.class);
                 intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }
@@ -43,7 +43,7 @@ public class Home extends AppCompatActivity {
         playlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Home.this, Playlist.class);
+                Intent intent = new Intent(HomeUser.this, PlaylistUser.class);
                 intent.putExtra("usernameTag", usernameTxt);
                 startActivity(intent);
             }

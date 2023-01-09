@@ -9,22 +9,15 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.jamminbaru.ControllerUser.Home;
-import com.example.jamminbaru.ControllerUser.Playlist;
-import com.example.jamminbaru.ControllerUser.Profile;
 import com.example.jamminbaru.R;
 import com.example.jamminbaru.creator.LoginCreator;
-import com.example.jamminbaru.user.LoginUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ProfileCreator extends AppCompatActivity {
-    private ImageButton home;
-    private TextView usernameTag;
-    private Button logoutDirectLogin;
-
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jamminapp-f2693-default-rtdb.firebaseio.com/");
-
+    ImageButton home;
+    TextView usernameTag;
+    Button logoutDirectLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

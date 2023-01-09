@@ -12,10 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jamminbaru.ControllerCreator.HomeCreator;
-import com.example.jamminbaru.ControllerUser.Home;
 import com.example.jamminbaru.R;
-import com.example.jamminbaru.user.LoginUser;
-import com.example.jamminbaru.user.RegisterUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
