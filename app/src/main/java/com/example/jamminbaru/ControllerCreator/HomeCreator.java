@@ -114,7 +114,7 @@ public class HomeCreator extends AppCompatActivity {
             }
         });
 
-        getCreatorInfo();
+        getHomeCreatorInfo();
     }
 
     @Override
@@ -129,7 +129,7 @@ public class HomeCreator extends AppCompatActivity {
         }
     }
 
-    private void getCreatorInfo(){
+    private void getHomeCreatorInfo(){
         root.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
