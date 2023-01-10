@@ -1,9 +1,7 @@
-package com.example.jamminbaru;
+package com.example.jamminbaru.Lagu;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,21 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.jamminbaru.R;
+
 import java.util.ArrayList;
-import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private  final recyclerviewinterface recyclerviewinterface;
+public class LaguAdapter extends RecyclerView.Adapter<LaguAdapter.MyViewHolder> {
+    private  final onClickLagu onClickLagu;
     static ArrayList<lagumodel> lagumodels;
-    //String URL[];
     Context context;
-    List<lagumodel> filteredlist;
 
-    public MyAdapter(Context context, ArrayList<lagumodel> lagumodels,recyclerviewinterface recyclerviewinterface){
+    public LaguAdapter(Context context, ArrayList<lagumodel> lagumodels, onClickLagu onClickLagu){
             this.context = context;
             this.lagumodels = lagumodels;
-            this.recyclerviewinterface = recyclerviewinterface;
-            //this.filteredlist = filteredlist;
+            this.onClickLagu = onClickLagu;
     }
     public void  setFilteredlist(ArrayList<lagumodel> filteredlist){
         this.lagumodels = filteredlist;
@@ -39,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.my_row,parent,false);
-        return new  MyAdapter.MyViewHolder(view,recyclerviewinterface);
+        return new  LaguAdapter.MyViewHolder(view, onClickLagu);
     }
 
     @Override
@@ -59,7 +55,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView text1,text2;
         ImageView imageku;
         ConstraintLayout mainlayout;
-        public  MyViewHolder(@NonNull View itemView,recyclerviewinterface recyclerviewinterface) {
+        public  MyViewHolder(@NonNull View itemView, onClickLagu onClickLagu) {
             super(itemView);
             text1 = itemView.findViewById(R.id.title);
             text2 = itemView.findViewById(R.id.penyanyi);
@@ -70,11 +66,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 @Override
                 public void onClick(View view) {
 
-                    if(recyclerviewinterface != null){
+                    if(onClickLagu != null){
                         int pos = getAdapterPosition();
 
                         if(pos != RecyclerView.NO_POSITION){
-                            recyclerviewinterface.onItemClick(lagumodels.get(getAdapterPosition()));
+                            onClickLagu.onItemClick(lagumodels.get(getAdapterPosition()));
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-package com.example.jamminbaru;
+package com.example.jamminbaru.Lagu;
 
 public class lagumodel {
     String judul,band,url;

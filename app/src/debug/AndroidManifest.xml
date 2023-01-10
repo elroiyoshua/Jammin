@@ -2,7 +2,7 @@
 
     <application>
         <activity
-            android:name="com.example.jamminbaru.lagu3"
+            android:name="com.example.jamminbaru.Lagu.lagu3"
             android:exported="false"
 
             >
