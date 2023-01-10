@@ -43,7 +43,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".LaguAll"
+            android:name=".Lagu.LaguAll"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -51,20 +51,6 @@
         </activity>
         <activity
             android:name=".ControllerUser.HomeUser"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".lagu2"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".lagu1"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
