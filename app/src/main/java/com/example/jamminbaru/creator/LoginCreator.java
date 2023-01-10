@@ -53,9 +53,10 @@ public class LoginCreator extends AppCompatActivity {
 
                 if(usernameTxt.isEmpty()){
                     username.setError("Enter Username");
-                }
-                if(passwordTxt.isEmpty()){
+                }if(passwordTxt.isEmpty()) {
                     password.setError("Enter Password");
+                }else if(usernameTxt.isEmpty()){
+                    username.setError("Enter Username");
                 }else{
                     databaseReference.child("Creator").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
