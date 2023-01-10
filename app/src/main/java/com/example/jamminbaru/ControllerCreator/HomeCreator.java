@@ -33,6 +33,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class HomeCreator extends AppCompatActivity {
     ImageButton profile;
@@ -102,7 +103,7 @@ public class HomeCreator extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            Toast.makeText(HomeCreator.this, "No Image Found", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeCreator.this, "No Song Found", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -113,7 +114,7 @@ public class HomeCreator extends AppCompatActivity {
             }
         });
 
-
+        getCreatorInfo();
     }
 
     @Override
@@ -126,6 +127,28 @@ public class HomeCreator extends AppCompatActivity {
             imageView_Song.setImageDrawable(ContextCompat.getDrawable(HomeCreator.this, R.drawable.ic_baseline_audio_file_24));
             Toast.makeText(this, "Song is Selected", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void getCreatorInfo(){
+        root.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists() && snapshot.getChildrenCount() > 0){
+                    if (snapshot.hasChild("soundUrl")){
+                        // link image foto ditemukan, tampilkan gambar
+                        //String image = snapshot.child("imageUrl").getValue().toString();
+                        //Picasso.get().load(image).into(imageView);
+                        imageView_Song.setImageDrawable(ContextCompat.getDrawable(HomeCreator.this, R.drawable.ic_baseline_audio_file_24));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void uploadToFirebase(Uri uri){
