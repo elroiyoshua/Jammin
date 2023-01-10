@@ -53,9 +53,10 @@ public class LoginUser extends AppCompatActivity {
 
                 if(usernameTxt.isEmpty()){
                     username.setError("Enter Username");
-                }
-                if(passwordTxt.isEmpty()){
+                }if(passwordTxt.isEmpty()) {
                     password.setError("Enter Password");
+                }else if(usernameTxt.isEmpty()){
+                    username.setError("Enter Username");
                 }else{
                     databaseReference.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
