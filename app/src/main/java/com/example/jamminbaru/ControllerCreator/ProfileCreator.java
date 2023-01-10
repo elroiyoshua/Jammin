@@ -129,7 +129,6 @@ public class ProfileCreator extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        // error handling
                     }
                 });
             }
