@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.jamminbaru.ControllerCreator.HomeCreator;
 import com.example.jamminbaru.Model.ModelCreator;
-import com.example.jamminbaru.Model.ModelUser;
 import com.example.jamminbaru.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
