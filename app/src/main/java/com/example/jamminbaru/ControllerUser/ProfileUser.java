@@ -138,7 +138,7 @@ public class ProfileUser extends AppCompatActivity {
             }
         });
 
-        getUserInfo();
+        getProfileUserInfo();
     }
 
     @Override
@@ -151,7 +151,7 @@ public class ProfileUser extends AppCompatActivity {
         }
     }
 
-    private void getUserInfo(){
+    private void getProfileUserInfo(){
         root.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
