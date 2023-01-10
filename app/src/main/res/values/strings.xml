@@ -64,4 +64,6 @@
         <item>shorturl.at/nzCH6</item>
         <item>shorturl.at/nzCH6</item>
     </string-array>
+
+    <string name="selectsong"><u>SELECT SONG</u></string>
 </resources>
