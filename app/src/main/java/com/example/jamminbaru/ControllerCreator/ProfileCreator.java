@@ -128,7 +128,7 @@ public class ProfileCreator extends AppCompatActivity {
             }
         });
 
-        getUserInfo();
+        getProfileCreatorInfo();
     }
 
     @Override
@@ -141,7 +141,7 @@ public class ProfileCreator extends AppCompatActivity {
         }
     }
 
-    private void getUserInfo(){
+    private void getProfileCreatorInfo(){
         root.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
