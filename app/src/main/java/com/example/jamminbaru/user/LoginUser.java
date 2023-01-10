@@ -20,25 +20,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
-
-
 public class LoginUser extends AppCompatActivity {
 
     TextView loginAsCreator;
-
-
+    EditText username, password;
+    Button login_Btn;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jamminapp-f2693-default-rtdb.firebaseio.com/");
+
+    public static ModelUser user = new ModelUser("default");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
 
-        final EditText username = findViewById(R.id.usernameUser);
-        final EditText password = findViewById(R.id.passwordUser);
-        final Button login_Btn = findViewById(R.id.loginbuttonUser);
+        id_LoginUser();
 
-        loginAsCreator =(TextView)findViewById(R.id.loginAsCreator);
         loginAsCreator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,8 +88,6 @@ public class LoginUser extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     public void GoSignup(View v){
@@ -107,5 +102,11 @@ public class LoginUser extends AppCompatActivity {
         finish();
     }
 
-    public static ModelUser user = new ModelUser("default");
+    public void id_LoginUser(){
+        username = findViewById(R.id.usernameUser);
+        password = findViewById(R.id.passwordUser);
+        login_Btn = findViewById(R.id.loginbuttonUser);
+        loginAsCreator = findViewById(R.id.loginAsCreator);
+    }
+
 }

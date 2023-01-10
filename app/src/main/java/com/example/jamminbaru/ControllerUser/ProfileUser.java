@@ -39,17 +39,16 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 public class ProfileUser extends AppCompatActivity {
-    ImageButton playlist;
     ImageButton home;
     TextView usernameTag;
     Button logoutDirectLogin, upload_btn, delete_btn;
 
     private ImageView imageView;
-    private ProgressBar progressBar;
-    final private String displayUsername = user.getPhoneTxt();
+    //private ProgressBar progressBar;
+    private Uri imageUri;
+    private final String displayUsername = user.getPhoneTxt();
     private final DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("User").child(displayUsername).child("Profile_Image");
     private final StorageReference reference = FirebaseStorage.getInstance().getReference().child("User").child(displayUsername).child("Profile_Image");
-    private Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,15 +56,10 @@ public class ProfileUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_user);
 
-        usernameTag = findViewById(R.id.usernameTag);
-        usernameTag.setText(displayUsername);
+        id_profileUser();
 
-        logoutDirectLogin = findViewById(R.id.logoutDirectLogin);
-        upload_btn = findViewById(R.id.upload_btn);
-        delete_btn = findViewById(R.id.delete_btn);
-        imageView = findViewById(R.id.profileimg);
-        progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.INVISIBLE);
+        usernameTag.setText(displayUsername);
+        //progressBar.setVisibility(View.INVISIBLE);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +141,16 @@ public class ProfileUser extends AppCompatActivity {
         getUserInfo();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 2 && resultCode == RESULT_OK && data != null){
+            imageUri = data.getData();
+            imageView.setImageURI(imageUri);
+        }
+    }
+
     private void getUserInfo(){
         root.addValueEventListener(new ValueEventListener() {
             @Override
@@ -168,16 +172,6 @@ public class ProfileUser extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 2 && resultCode == RESULT_OK && data != null){
-            imageUri = data.getData();
-            imageView.setImageURI(imageUri);
-        }
-    }
-
     private void uploadToFirebase(Uri uri){
         StorageReference fileRef = reference.child(System.currentTimeMillis() + "." + getFileExtension(uri));
         fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -189,7 +183,7 @@ public class ProfileUser extends AppCompatActivity {
                         String downloadUrl = uri.toString();
                         ModelProfileUser model = new ModelProfileUser(downloadUrl);
                         root.setValue(model);
-                        progressBar.setVisibility(View.INVISIBLE);
+                        //progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(ProfileUser.this, "Uploaded Successfully!", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -197,12 +191,12 @@ public class ProfileUser extends AppCompatActivity {
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                progressBar.setVisibility(View.VISIBLE);
+                //progressBar.setVisibility(View.VISIBLE);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                progressBar.setVisibility(View.INVISIBLE);
+                //progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(ProfileUser.this, "Uploading Failed!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -214,18 +208,12 @@ public class ProfileUser extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cr.getType(mUri));
     }
 
-    //    public void GoPlaylist(View v){
-//        Intent intent =new Intent(this,Playlist.class);
-//        startActivity(intent);
-//        finish();
-//
-//    }
-//
-//    public void GoHome(View v){
-//        Intent intent =new Intent(this,Home.class);
-//        startActivity(intent);
-//        finish();
-//
-//    }
-
+    public void id_profileUser(){
+        usernameTag = findViewById(R.id.usernameTag);
+        logoutDirectLogin = findViewById(R.id.logoutDirectLogin);
+        upload_btn = findViewById(R.id.upload_btn);
+        delete_btn = findViewById(R.id.delete_btn);
+        imageView = findViewById(R.id.profileimg);
+        //progressBar = findViewById(R.id.progressBar);
+    }
 }

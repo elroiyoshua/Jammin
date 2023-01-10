@@ -144,6 +144,7 @@ public class LaguAll extends AppCompatActivity {
             waktu.setText(milisecondstotimer(waktu1));
         }
     };
+
     private void updateSeekBar(){
         if(mediaPlayer.isPlaying()){
             seekbar.setProgress((int)(((float)mediaPlayer.getCurrentPosition()/mediaPlayer.getDuration())*100));

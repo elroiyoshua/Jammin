@@ -23,18 +23,19 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginCreator extends AppCompatActivity {
 
     TextView loginAsUser;
-
+    EditText username, password;
+    Button login_Btn;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jamminapp-f2693-default-rtdb.firebaseio.com/");
+
+    public static ModelCreator creator = new ModelCreator("default");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_creator);
 
-        final EditText username = findViewById(R.id.usernameCreator);
-        final EditText password = findViewById(R.id.passwordCreator);
-        final Button login_Btn = findViewById(R.id.loginbuttonCreator);
+        id_LoginCreator();
 
-        loginAsUser =(TextView)findViewById(R.id.loginAsUser);
         loginAsUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,5 +102,11 @@ public class LoginCreator extends AppCompatActivity {
         finish();
     }
 
-    public static ModelCreator creator = new ModelCreator("default");
+    public void id_LoginCreator(){
+        username = findViewById(R.id.usernameCreator);
+        password = findViewById(R.id.passwordCreator);
+        login_Btn = findViewById(R.id.loginbuttonCreator);
+        loginAsUser = findViewById(R.id.loginAsUser);
+    }
+
 }

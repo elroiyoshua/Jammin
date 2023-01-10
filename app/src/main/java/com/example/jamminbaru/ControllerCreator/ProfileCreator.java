@@ -44,11 +44,11 @@ public class ProfileCreator extends AppCompatActivity {
     Button logoutDirectLogin, upload_btn, delete_btn;
 
     private ImageView imageView;
-    private ProgressBar progressBar;
-    final private String displayUsername = creator.getPhoneTxt();
+    //private ProgressBar progressBar;
+    private Uri imageUri;
+    private final String displayUsername = creator.getPhoneTxt();
     private final DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("Creator").child(displayUsername).child("Profile_Image");
     private final StorageReference reference = FirebaseStorage.getInstance().getReference().child("Creator").child(displayUsername).child("Profile_Image");
-    private Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +56,10 @@ public class ProfileCreator extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_creator);
 
-        usernameTag = findViewById(R.id.usernameTag);
-        usernameTag.setText(displayUsername);
+        id_profileCreator();
 
-        logoutDirectLogin = findViewById(R.id.logoutDirectLogin);
-        upload_btn = findViewById(R.id.upload_btn);
-        delete_btn = findViewById(R.id.delete_btn);
-        imageView = findViewById(R.id.profileimg);
-        progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.INVISIBLE);
+        usernameTag.setText(displayUsername);
+        //progressBar.setVisibility(View.INVISIBLE);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +81,6 @@ public class ProfileCreator extends AppCompatActivity {
                 }
             }
         });
-
 
         logoutDirectLogin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -137,6 +131,16 @@ public class ProfileCreator extends AppCompatActivity {
         getUserInfo();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 2 && resultCode == RESULT_OK && data != null){
+            imageUri = data.getData();
+            imageView.setImageURI(imageUri);
+        }
+    }
+
     private void getUserInfo(){
         root.addValueEventListener(new ValueEventListener() {
             @Override
@@ -158,16 +162,6 @@ public class ProfileCreator extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 2 && resultCode == RESULT_OK && data != null){
-            imageUri = data.getData();
-            imageView.setImageURI(imageUri);
-        }
-    }
-
     private void uploadToFirebase(Uri uri){
         StorageReference fileRef = reference.child(System.currentTimeMillis() + "." + getFileExtension(uri));
         fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -179,7 +173,7 @@ public class ProfileCreator extends AppCompatActivity {
                         String downloadUrl = uri.toString();
                         ModelProfileCreator model = new ModelProfileCreator(downloadUrl);
                         root.setValue(model);
-                        progressBar.setVisibility(View.INVISIBLE);
+                        //progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(ProfileCreator.this, "Uploaded Successfully!", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -187,12 +181,12 @@ public class ProfileCreator extends AppCompatActivity {
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                progressBar.setVisibility(View.VISIBLE);
+                //progressBar.setVisibility(View.VISIBLE);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                progressBar.setVisibility(View.INVISIBLE);
+                //progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(ProfileCreator.this, "Uploading Failed!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -202,5 +196,14 @@ public class ProfileCreator extends AppCompatActivity {
         ContentResolver cr = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(mUri));
+    }
+
+    public void id_profileCreator(){
+        usernameTag = findViewById(R.id.usernameTag);
+        logoutDirectLogin = findViewById(R.id.logoutDirectLogin);
+        upload_btn = findViewById(R.id.upload_btn);
+        delete_btn = findViewById(R.id.delete_btn);
+        imageView = findViewById(R.id.profileimg);
+        //progressBar = findViewById(R.id.progressBar);
     }
 }
