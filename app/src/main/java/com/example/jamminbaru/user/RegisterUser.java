@@ -19,7 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class RegisterUser extends AppCompatActivity {
-
+    EditText edit_phone, edit_email, edit_password, edit_confirmPassword;
+    Button register_btn;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://jamminapp-f2693-default-rtdb.firebaseio.com/");
 
     @Override
@@ -27,12 +28,7 @@ public class RegisterUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
 
-        final EditText edit_phone = findViewById(R.id.phoneTextUser);
-        final EditText edit_email = findViewById(R.id.emailTextUser);
-        final EditText edit_password = findViewById(R.id.passwordTextUser);
-        final EditText edit_confirmPassword = findViewById(R.id.passwordConfirmTextUser);
-
-        Button register_btn = findViewById(R.id.register_btnUser);
+        id_RegisterUser();
 
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,11 +98,18 @@ public class RegisterUser extends AppCompatActivity {
             }
         });
     }
+
     public void GoLogin(View v){
         Intent intent = new Intent(this, LoginUser.class);
         startActivity(intent);
         finish();
     }
 
-
+    public void id_RegisterUser(){
+        edit_phone = findViewById(R.id.phoneTextUser);
+        edit_email = findViewById(R.id.emailTextUser);
+        edit_password = findViewById(R.id.passwordTextUser);
+        edit_confirmPassword = findViewById(R.id.passwordConfirmTextUser);
+        register_btn = findViewById(R.id.register_btnUser);
+    }
 }

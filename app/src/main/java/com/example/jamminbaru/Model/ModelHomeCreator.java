@@ -1,7 +1,7 @@
 package com.example.jamminbaru.Model;
 
 public class ModelHomeCreator{
-        private String soundUrl;
+    private String soundUrl;
 
     public ModelHomeCreator(String soundUrl) {
         this.soundUrl = soundUrl;

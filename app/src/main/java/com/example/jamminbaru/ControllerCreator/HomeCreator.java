@@ -41,26 +41,20 @@ public class HomeCreator extends AppCompatActivity {
     
     private Uri audioUri;
     private ImageView imageView_Song;
-    final private String displayUsername = creator.getPhoneTxt();
+    private final String displayUsername = creator.getPhoneTxt();
     private final DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("Creator").child(displayUsername).child("Song");
     private final StorageReference reference = FirebaseStorage.getInstance().getReference().child("Creator").child(displayUsername).child("Song");
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        String displayUsername = creator.getPhoneTxt();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_creator);
 
-        imageView_Song = findViewById(R.id.imageView_Song);
+        id_homeCreator();
 
-        usernamedisplayTagHome = findViewById(R.id.usernamedisplayTagHome);
         usernamedisplayTagHome.setText(displayUsername);
 
-        profile = findViewById(R.id.profileLogo);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -168,5 +162,11 @@ public class HomeCreator extends AppCompatActivity {
         ContentResolver cr = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(mUri));
+    }
+
+    public void id_homeCreator(){
+        imageView_Song = findViewById(R.id.imageView_Song);
+        usernamedisplayTagHome = findViewById(R.id.usernamedisplayTagHome);
+        profile = findViewById(R.id.profileLogo);
     }
 }
