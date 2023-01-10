@@ -2,123 +2,120 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ControllerCreator.ProfileCreator">
 
     <ImageView
         android:id="@+id/profileimg"
-        android:layout_width="244dp"
-        android:layout_height="225dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063"
+        app:layout_constraintVertical_bias="0.074"
         app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
 
     <Button
         android:id="@+id/upload_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="159dp"
-        android:text="UPLOAD IMAGE"
-        app:layout_constraintBottom_toTopOf="@+id/delete_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileimg" />
-
-    <Button
-        android:id="@+id/delete_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="133dp"
-        android:layout_marginEnd="134dp"
-        android:layout_marginBottom="17dp"
-        android:text="DELETE IMAGE"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upload_btn" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="181dp"
-        android:layout_marginEnd="182dp"
-        android:layout_marginBottom="33dp"
-        android:indeterminateTint="@color/purple_200"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/delete_btn" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
+        android:background="@drawable/input_bg"
+        android:fontFamily="@font/lexendregular"
+        android:text="Change Picture"
+        android:textColor="@color/white"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.654" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameTag"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/delete_btn"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg_stroke"
+        android:fontFamily="@font/lexendregular"
+        android:text="Delete Picture"
+        android:textColor="@color/purple_500"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upload_btn"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <TextView
         android:id="@+id/usernameTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/lexendregular"
         android:text="none"
+        android:textColor="@color/black"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.713" />
+        app:layout_constraintTop_toBottomOf="@+id/profileimg"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logoutDirectLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/signoutbtn"
+        android:fontFamily="@font/lexendregular"
+        android:padding="16dp"
         android:text="Sign Out"
+        android:textColor="@color/cardinal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.838" />
+        app:layout_constraintTop_toBottomOf="@+id/delete_btn"
+        app:layout_constraintVertical_bias="0.669" />
 
     <ImageButton
         android:id="@+id/homeLogo3"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="4dp"
-        android:onClick="GoHome"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoutDirectLogin"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/rumah" />
 
     <ImageButton
         android:id="@+id/profileLogo3"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="GoProfile"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.715"
+        app:layout_constraintHorizontal_bias="0.622"
         app:layout_constraintStart_toEndOf="@+id/homeLogo3"
+        app:layout_constraintTop_toBottomOf="@+id/delete_btn"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/user2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

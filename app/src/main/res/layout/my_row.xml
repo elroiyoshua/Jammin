@@ -8,54 +8,65 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="412dp"
-        android:layout_height="153dp"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/gambar"
-            android:layout_width="108dp"
-            android:layout_height="94dp"
-            android:layout_marginStart="36dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.491"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_launcher_foreground" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="185dp"
             android:layout_height="29dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/lexendregular"
             android:gravity="center_horizontal"
             android:text="Title"
-            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="16dp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/gambar"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/penyanyi"
             android:layout_width="139dp"
             android:layout_height="21dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/lexendregular"
             android:gravity="center_horizontal"
             android:text="Band"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="@+id/title"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/gambar"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="409dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gambar">
 
