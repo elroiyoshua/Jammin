@@ -170,12 +170,7 @@ public class HomeUser extends AppCompatActivity implements com.example.jamminbar
 
     }
 
-    public void GoPlaylist(View v){
-        Intent intent =new Intent(this, PlaylistUser.class);
-        startActivity(intent);
-        finish();
 
-    }
 
     public void GoProfile(View v){
         Intent intent =new Intent(this, ProfileUser.class);

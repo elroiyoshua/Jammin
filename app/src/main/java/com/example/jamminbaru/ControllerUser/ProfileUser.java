@@ -105,14 +105,14 @@ public class ProfileUser extends AppCompatActivity {
             }
         });
 
-        playlist = (ImageButton) findViewById(R.id.playlistLogo3);
-        playlist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileUser.this, PlaylistUser.class);
-                startActivity(intent);
-            }
-        });
+//        playlist = (ImageButton) findViewById(R.id.playlistLogo3);
+//        playlist.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(ProfileUser.this, PlaylistUser.class);
+//                startActivity(intent);
+//            }
+//        });
 
         delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
