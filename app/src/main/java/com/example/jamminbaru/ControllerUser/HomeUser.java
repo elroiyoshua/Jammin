@@ -14,16 +14,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jamminbaru.LaguAll;
-import com.example.jamminbaru.MyAdapter;
+import com.example.jamminbaru.Lagu.LaguAll;
+import com.example.jamminbaru.Lagu.LaguAdapter;
 import com.example.jamminbaru.R;
-import com.example.jamminbaru.lagumodel;
-import com.example.jamminbaru.recyclerviewinterface;
+import com.example.jamminbaru.Lagu.lagumodel;
+import com.example.jamminbaru.Lagu.onClickLagu;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class HomeUser extends AppCompatActivity implements com.example.jamminbaru.recyclerviewinterface {
+public class HomeUser extends AppCompatActivity implements onClickLagu {
 
     ArrayList<lagumodel> lagumodels = new ArrayList<>();
     int[]  images ={R.drawable.cover1,R.drawable.cover2,R.drawable.cover3,R.drawable.cover4,R.drawable.cover5,R.drawable.cover6,R.drawable.cover7,R.drawable.cover8,R.drawable.cover9,R.drawable.cover10
@@ -51,12 +51,12 @@ public class HomeUser extends AppCompatActivity implements com.example.jamminbar
             "https://firebasestorage.googleapis.com/v0/b/jamminapp-f2693.appspot.com/o/wowaka%20-%20Unhappy%20Refrain%20ft.%20Hatsune%20Miku.mp3?alt=media&token=0e127e5e-62be-4eb9-86c4-ee520b57e5b4",
             "https://firebasestorage.googleapis.com/v0/b/jamminapp-f2693.appspot.com/o/Kobo%20KanaeruOfficial%E9%AB%AD%E7%94%B7dism%20%20Pretender%20WEKA%20remix.mp3?alt=media&token=1c4b4b11-2789-4154-a7cc-d2aca77d5910"};
 
-    recyclerviewinterface recyclerviewinterface;
+    onClickLagu onClickLagu;
 
     ImageButton rec1, rec2, rec3;
     RecyclerView recyclerView;
     private SearchView searchView;
-    MyAdapter searchAdapter;
+    LaguAdapter searchAdapter;
     TextView usernameTag;
     final private String displayUsername = user.getPhoneTxt();
 
@@ -64,15 +64,10 @@ public class HomeUser extends AppCompatActivity implements com.example.jamminbar
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home2);
-
-        usernameTag = findViewById(R.id.usernamedisplayTagHome);
-        usernameTag.setText(displayUsername);
-
-        recyclerView = findViewById(R.id.recyclerview);
-        searchView = findViewById(R.id.searchview);
+        IDallhome();
         setuplagumodels();
-        MyAdapter adapter =  new MyAdapter(this,lagumodels,this);
-        searchAdapter = new MyAdapter(this  ,lagumodels,this);
+        LaguAdapter adapter =  new LaguAdapter(this,lagumodels,this);
+        searchAdapter = new LaguAdapter(this  ,lagumodels,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setAdapter(searchAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -169,8 +164,12 @@ public class HomeUser extends AppCompatActivity implements com.example.jamminbar
         startActivity(intent);
 
     }
-
-
+    public void IDallhome(){
+        usernameTag = findViewById(R.id.usernamedisplayTagHome);
+        usernameTag.setText(displayUsername);
+        recyclerView = findViewById(R.id.recyclerview);
+        searchView = findViewById(R.id.searchview);
+    }
 
     public void GoProfile(View v){
         Intent intent =new Intent(this, ProfileUser.class);
