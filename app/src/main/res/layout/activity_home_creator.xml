@@ -73,20 +73,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.002" />
 
-    <TextView
-        android:id="@+id/chooseSong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="450dp"
-        android:layout_marginEnd="161dp"
-        android:text="SELECT SONG"
-        app:layout_constraintBottom_toTopOf="@+id/upload_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/upload_btn"
         android:layout_width="180dp"
@@ -101,7 +87,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_Song"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.177" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/delete_btn"
@@ -127,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.104"
+        app:layout_constraintVertical_bias="0.146"
         app:srcCompat="@drawable/ic_baseline_close_24" />
 
     <ImageView
@@ -141,6 +127,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/jam_removebg_preview" />
+
+    <TextView
+        android:id="@+id/chooseSong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lexendregular"
+        android:letterSpacing="0.1"
+        android:padding="10dp"
+        android:text="@string/selectsong"
+        android:textColor="@color/purple_500"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/upload_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_Song" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
