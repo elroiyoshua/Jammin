@@ -40,14 +40,14 @@ public class RegisterCreator extends AppCompatActivity {
 
                 if (phoneTxt.isEmpty() && emailTxt.isEmpty() && passwordTxt.isEmpty() && passwordConfirmTxt.isEmpty()) {
                     // All fields are empty
-                    edit_phone.setError("Enter Your Phone");
+                    edit_phone.setError("Enter Your Username");
                     edit_email.setError("Enter Your Email");
                     edit_password.setError("Enter Your Password");
                     edit_confirmPassword.setError("Enter Your Confirm Password");
                 } else if (phoneTxt.isEmpty() || emailTxt.isEmpty() || passwordTxt.isEmpty() || passwordConfirmTxt.isEmpty()) {
                     // Some fields are empty
                     if (phoneTxt.isEmpty()) {
-                        edit_phone.setError("Enter Your Phone");
+                        edit_phone.setError("Enter Your Username");
                     }
                     if (emailTxt.isEmpty()) {
                         edit_email.setError("Enter Your Email");
@@ -62,7 +62,7 @@ public class RegisterCreator extends AppCompatActivity {
                     if (passwordTxt.length() < 8) {
                         edit_password.setError("Password too short");
                     } else if (!phoneTxt.matches("^\\S*$")) {
-                        edit_phone.setError("Phone doesn't contain Space");
+                        edit_phone.setError("Username doesn't contain Space");
                     } else if (!emailTxt.matches("^\\S*$")) {
                         edit_email.setError("Email doesn't contain Space");
                     } else if (!Patterns.EMAIL_ADDRESS.matcher(emailTxt).matches()) {
