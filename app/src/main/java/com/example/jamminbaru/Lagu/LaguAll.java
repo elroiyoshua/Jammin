@@ -127,6 +127,7 @@ public class LaguAll extends AppCompatActivity {
 
     private void prepareMediaPlayer(){
         String url = getIntent().getStringExtra("URL");
+
         try {
             mediaPlayer.setDataSource(url);
             mediaPlayer.prepare();

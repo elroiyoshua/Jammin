@@ -13,15 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JamminBaru"
-        tools:targetApi="31" >
+        tools:targetApi="31"
+        >
+
         <activity
             android:name=".ControllerCreator.ProfileCreator"
+            android:screenOrientation="portrait"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".ControllerCreator.HomeCreator"
             android:exported="false" >
             <meta-data
@@ -29,6 +33,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".creator.RegisterCreator"
             android:exported="false" >
             <meta-data
@@ -36,6 +41,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".creator.LoginCreator"
             android:exported="false" >
             <meta-data
@@ -43,6 +49,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Lagu.LaguAll"
             android:exported="false" >
             <meta-data
@@ -50,6 +57,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".ControllerUser.HomeUser"
             android:exported="false" >
             <meta-data
@@ -57,6 +65,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".ControllerUser.ProfileUser"
             android:exported="false" >
             <meta-data
@@ -64,6 +73,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".user.RegisterUser"
             android:exported="false" >
             <meta-data
@@ -71,6 +81,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".user.LoginUser"
             android:exported="false" >
             <meta-data
@@ -78,6 +89,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
